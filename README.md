@@ -1,8 +1,8 @@
 # Movie Title Guessing Game
-### Description
+
 
 A simple Python-based movie title guessing game using the tkinter library for the graphical user interface. Test your knowledge of movie quotes and challenge yourself to beat the high score!
-Features
+### Features
 
   * Randomly displays movie quotes.
   * Multiple-choice options to select the correct movie title.
