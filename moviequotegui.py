@@ -65,7 +65,7 @@ class MovieGuessingGame:
                     self.high_score = self.correct_guesses
                     self.save_high_score()
                 
-                messagebox.showinfo("Game Over", f"Game Over! You made 5 incorrect guesses.")
+                messagebox.showinfo("Game Over", f"Game Over! You scored {self.correct_guesses}.")
                 self.correct_guesses = 0
                 self.incorrect_guesses = 0
                 score_label["text"] = f"Score: {self.correct_guesses}  |  Lives: {5 - self.incorrect_guesses}  |  High Score: {self.high_score}"
@@ -105,27 +105,33 @@ class MovieGuessingGame:
 # Create the main application window
 root = tk.Tk()
 root.title("Movie Title Guessing Game")
+root.configure(background='#1e1e1e')  # Set background color
 
 # Initialize the game
 game = MovieGuessingGame()
 
+# Create and configure the style
+style = ttk.Style()
+style.configure('TLabel', foreground='#FFD700', background='#1e1e1e', font=('Arial', 14))
+style.configure('TButton', foreground='#ffffff', background='#FF4500', font=('Arial', 12))
+style.configure('TScrolledText', foreground='#000000', background='#F5F5F5', font=('Arial', 12))
+
 # Create widgets for the GUI
-instruction_label = ttk.Label(root, text="Guess the movie title based on the given quote!")
-instruction_label.pack(pady=20)
+ttk.Label(root, text="Guess the movie title based on the given quote!", style='TLabel').pack(pady=20)
 
 quote_text = scrolledtext.ScrolledText(root, width=60, height=10, wrap=tk.WORD)
 quote_text.pack(pady=20)
+quote_text.configure(background='#F5F5F5', foreground='#1e1e1e', font=('Arial', 12))  # Set background and font properties
 
 answer_buttons = []
 for i in range(4):
-    btn = ttk.Button(root, text="", command=lambda: None)
+    btn = ttk.Button(root, text="", command=lambda: None, style='TButton')
     btn.pack(pady=5)
     answer_buttons.append(btn)
 
-score_label = ttk.Label(root, text="Score: 0  |  Lives: 0  |  High Score: 0")
-score_label.pack(pady=20)
+ttk.Button(root, text="Start Game", command=lambda: game.start_game(quote_text, score_label), style='TButton').pack(pady=20)
 
-start_game_button = ttk.Button(root, text="Start Game", command=lambda: game.start_game(quote_text, score_label))
-start_game_button.pack(pady=20)
+score_label = ttk.Label(root, text="Score: 0  |  Lives: 0  |  High Score: 0", style='TLabel')
+score_label.pack(pady=20)
 
 root.mainloop()
