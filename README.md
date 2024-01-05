@@ -23,11 +23,6 @@ Navigate to the project directory:
 
     cd movie-title-guessing-game
 
-Install the required dependencies:
-
-
-
-    pip install -r requirements.txt
 
 ### Usage
 
