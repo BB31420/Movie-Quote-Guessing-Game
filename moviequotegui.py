@@ -93,7 +93,7 @@ class MovieGuessingGame:
 
 
     def start_game(self, quote_text, score_label):
-        filename = 'movie_quotes250.txt'
+        filename = 'movie_quotes.txt'
         if not self.quotes:
             self.load_quotes(filename)
         
