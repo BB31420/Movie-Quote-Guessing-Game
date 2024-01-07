@@ -42,6 +42,9 @@ class MovieGuessingGame:
                 
                 elif line.startswith('¤'):
                     current_quote += " " + line[1:].strip()
+                    
+                elif line.startswith(''):
+                    current_quote += "\n " + line[:]
             
             if movie_title and current_quote:
                 self.quotes.append((movie_title, current_quote.strip()))
@@ -129,7 +132,7 @@ for i in range(4):
     btn.pack(pady=5)
     answer_buttons.append(btn)
 
-ttk.Button(root, text="New Game", command=lambda: game.start_game(quote_text, score_label), style='TButton').pack(pady=20)
+ttk.Button(root, text="Start Game", command=lambda: game.start_game(quote_text, score_label), style='TButton').pack(pady=20)
 
 score_label = ttk.Label(root, text="Score: 0  |  Lives: 0  |  High Score: 0", style='TLabel')
 score_label.pack(pady=20)
